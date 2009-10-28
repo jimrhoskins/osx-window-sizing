@@ -57,6 +57,6 @@ tell application "System Events"
       set {w, h} to {0, 0}
     end try
     set position of window 1 to {(((screen_width - windowWidth - w) / 2) - 1), ((screen_height - windowHeight) / 2.0) - desktopTop - 17}
-    set size of window 1 to {windowWidth, windowHeight}
+    set size of window 1 to {windowWidth + 16, windowHeight}
   end tell
 end tell
