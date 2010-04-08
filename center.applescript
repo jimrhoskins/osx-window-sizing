@@ -1,7 +1,7 @@
 -- AUTHOR: Yehuda Katz
 -- MODIFIED: Geoffrey Grosenbach http://peepcode.com
 
-set windowWidth to 1000
+set windowWidth to 1020
 set windowHeight to 600
 delay 0.1
 
