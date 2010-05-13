@@ -1,9 +1,12 @@
 -- AUTHOR: Yehuda Katz
 -- MODIFIED: Geoffrey Grosenbach http://peepcode.com
 
-set windowWidth to 800
+set windowWidth to 1000
 set windowHeight to 600
-delay 0.1
+set offsetLeft to - 1920/2
+set offsetTop to 0
+
+-------------------------------------------------------------------------------
 
 set AppleScript's text item delimiters to "x"
 
@@ -16,13 +19,16 @@ if res is "" then
   display dialog "You need to enter a correct response"
   return
 end if
-set {windowWidth, windowHeight} to text items of res
+-- set {windowWidth, windowHeight} to text items of res
+
 
 set AppleScript's text item delimiters to ""
 
 -- Works with most setups
 tell application "Finder"
   set {screen_top, screen_left, screen_width, screen_height} to bounds of window of desktop
+  -- set screen_width to 1920
+  -- set screen_height to 1200
 end tell
 
 -- NOTE This may work better with some multi-monitor setups
@@ -50,6 +56,7 @@ on error
   set {w, h} to {0, 0}
 end try
 
+
 tell application "System Events"
   tell process myFrontMost
     try
@@ -57,7 +64,7 @@ tell application "System Events"
     on error
       set {w, h} to {0, 0}
     end try
-    set position of window 1 to {((screen_width - windowWidth - w) / 2), ((screen_height - windowHeight) / 2.0) - desktopTop}
+    set position of window 1 to {((screen_width - windowWidth - w) / 2) + offsetLeft, ((screen_height - windowHeight) / 2.0) - offsetTop }
     set size of window 1 to {windowWidth, windowHeight}
   end tell
 end tell
